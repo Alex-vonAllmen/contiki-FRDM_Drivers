@@ -45,7 +45,7 @@ clean:
 
 ### Rules for building the driver library.
 SOURCEFILES += $(wildcard $(DRIVERDIR)/*.c)
-SOURCEFILES += $(SOURCEDIR)/sa_mtb.c $(SOURCEDIR)/Events.c
+#SOURCEFILES += $(SOURCEDIR)/sa_mtb.c $(SOURCEDIR)/Events.c
 OBJECTFILES += $(patsubst %.c,$(OBJECTDIR)/%.o,$(notdir $(SOURCEFILES)))
 
 define FINALIZE_DEPENDENCY

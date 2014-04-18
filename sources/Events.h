@@ -52,24 +52,32 @@
 #include "BitIoLdd6.h"
 #include "GPIO0.h"
 #include "BitIoLdd7.h"
-#include "GPIO1.h"
+#include "FIFO.h"
 #include "BitIoLdd8.h"
-#include "GPIO2.h"
-#include "BitIoLdd9.h"
-#include "GPIO3.h"
+#include "CCA.h"
 #include "BitIoLdd10.h"
-#include "GPIO4.h"
+#include "SFD.h"
 #include "BitIoLdd11.h"
 #include "GPIO5.h"
 #include "BitIoLdd12.h"
-#include "SM1.h"
-#include "SMasterLdd1.h"
-#include "MMA1.h"
+#include "ACCEL.h"
 #include "GI2C1.h"
 #include "WAIT1.h"
 #include "I2C1.h"
 #include "CsIO1.h"
 #include "IO1.h"
+#include "FIFOP.h"
+#include "ExtIntLdd1.h"
+#include "TPM0.h"
+#include "USBD_CDC.h"
+#include "USB0.h"
+#include "CDC1.h"
+#include "Tx1.h"
+#include "Rx1.h"
+#include "CS1.h"
+#include "CS2.h"
+#include "SPI.h"
+#include "SMasterLdd1.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -94,46 +102,15 @@ extern "C" {
 ** ###################################################################
 */
 
-void SM1_OnRxChar(void);
+void fifop_interrupt(void);
 /*
 ** ===================================================================
-**     Event       :  SM1_OnRxChar (module Events)
+**     Event       :  fifop_interrupt (module Events)
 **
-**     Component   :  SM1 [SynchroMaster]
+**     Component   :  FIFOP [ExtInt]
 **     Description :
-**         This event is called after a correct character is received.
-**         The event is available only when the <Interrupt
-**         service/event> property is enabled.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-
-void SM1_OnTxChar(void);
-/*
-** ===================================================================
-**     Event       :  SM1_OnTxChar (module Events)
-**
-**     Component   :  SM1 [SynchroMaster]
-**     Description :
-**         This event is called after a character is transmitted.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-
-void SM1_OnError(void);
-/*
-** ===================================================================
-**     Event       :  SM1_OnError (module Events)
-**
-**     Component   :  SM1 [SynchroMaster]
-**     Description :
-**         This event is called when a channel error (not the error
-**         returned by a given method) occurs. The errors can be read
-**         using <GetError> method.
-**         The event is available only when the <Interrupt
-**         service/event> property is enabled.
+**         This event is called when an active signal edge/level has
+**         occurred.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================
