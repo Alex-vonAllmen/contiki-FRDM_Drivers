@@ -18,9 +18,9 @@ LD       = $(COMPILER)-gcc
 OBJCOPY  = $(COMPILER)-objcopy
 STRIP    = $(COMPILER)-strip
 
-SUFFIX = -cm0plus
+SUFFIX = -cm0
 
-CFLAGS += -O0 -mcpu=cortex-m0plus -mthumb -mlittle-endian
+CFLAGS += -O0 -mcpu=cortex-m0 -mthumb -mlittle-endian
 CFLAGS += -fshort-enums -fomit-frame-pointer -fno-strict-aliasing
 CFLAGS += -ffunction-sections -fdata-sections
 CFLAGS += -Wall  -g3
@@ -31,6 +31,8 @@ CFLAGS += -I $(PExDIR)/lib/Kinetis/pdd/inc
 CFLAGS += -I $(PExDIR)/lib/Kinetis/iofiles
 CFLAGS += -I $(EWLDIR)/EWL_C/include
 CFLAGS += -I $(EWLDIR)/EWL_Runtime/include
+
+AROPTS = rcf
 
 
 ### The default rule, which causes the driver library to be built.
@@ -75,4 +77,4 @@ $(OBJECTDIR)/%.o: %.c | $(OBJECTDIR)
 ### The rule for creating an object library.
 $(LIBDRIVER)/libdriver.a: $(OBJECTFILES)
 	@echo "  AR       " $@
-	@$(AR) -cr $@ $^
+	@$(AR) $(AROPTS) $@ $^
