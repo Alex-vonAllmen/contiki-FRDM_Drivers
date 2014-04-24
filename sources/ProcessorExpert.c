@@ -63,13 +63,8 @@
 #include "FIFOP.h"
 #include "ExtIntLdd1.h"
 #include "TPM0.h"
-#include "USBD.h"
-#include "USB0.h"
-#include "CDC1.h"
-#include "Tx1.h"
-#include "Rx1.h"
-#include "CS1.h"
-#include "CS2.h"
+#include "SPI.h"
+#include "SMasterLdd1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -77,54 +72,74 @@
 #include "IO_Map.h"
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
-#include <stdio.h>
+#include "ConsoleIO.h"
 void SysTick_Handler(void) {}
 void rtimer_arch_interrupt(void) {}
+
+#if USB_CDC
 static uint8_t cdc_buffer[USBD_DATA_BUFF_SIZE];
 static uint8_t in_buffer[USBD_DATA_BUFF_SIZE];
  
-static void CDC_Run(void) {
-	int i;
+static void
+CDC_Run(void)
+{
+  int i;
 
-	for(;;) {
-		while(CDC1_App_Task(cdc_buffer, sizeof(cdc_buffer))==ERR_BUSOFF) {
-			/* device not enumerated */
-			Led_Red_Neg(); Led_Green_Off();
-			WAIT1_Waitms(10);
-		}
-		Led_Red_Off(); Led_Green_Neg();
-		if (CDC1_GetCharsInRxBuf()!=0) {
-			i = 0;
-			while(   i<sizeof(in_buffer)-1
-					&& CDC1_GetChar(&in_buffer[i])==ERR_OK
-			)
-			{
-				i++;
-			}
-			in_buffer[i] = '\0';
-			(void)CDC1_SendString((unsigned char*)"echo: ");
-			(void)CDC1_SendString(in_buffer);
-			(void)CDC1_SendString((unsigned char*)"\r\n");
-		} else {
-			WAIT1_Waitms(10);
-		}
-	}
+  for (;;)
+    {
+      while (CDC1_App_Task(cdc_buffer, sizeof(cdc_buffer)) == ERR_BUSOFF)
+        {
+          /* device not enumerated */
+          Led_Red_Neg();
+          Led_Green_Off();
+          WAIT1_Waitms(10);
+        }
+      Led_Red_Off();
+      Led_Green_Neg();
+      if (CDC1_GetCharsInRxBuf() != 0)
+        {
+          i = 0;
+          while (i < sizeof(in_buffer) - 1
+              && CDC1_GetChar(&in_buffer[i]) == ERR_OK)
+            {
+              i++;
+            }
+          in_buffer[i] = '\0';
+          (void) CDC1_SendString((unsigned char*) "echo: ");
+          (void) CDC1_SendString(in_buffer);
+          (void) CDC1_SendString((unsigned char*) "\r\n");
+        }
+      else
+        {
+          WAIT1_Waitms(10);
+        }
+    }
 }
+#endif
 
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
 {
   /* Write your local variable definition here */
-
+  int number;
+  
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
   /*** End of Processor Expert internal initialization.                    ***/
 
   /* Write your code here */
   /* For example: for(;;) { } */
-  printf("PE low level components initialized.\n");
+  ConsoleIO_Init();
+  printf("Hardware initialized.\r\n");
+  for(;;) {
+     printf("Enter a number:\r\n");
+     scanf("%d",&number);
+     printf("%d", number);
+  }
+#if USB_CDC
   CDC_Run();
+#endif
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/

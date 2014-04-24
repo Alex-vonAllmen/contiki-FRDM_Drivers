@@ -67,13 +67,8 @@
 #include "FIFOP.h"
 #include "ExtIntLdd1.h"
 #include "TPM0.h"
-#include "USBD.h"
-#include "USB0.h"
-#include "CDC1.h"
-#include "Tx1.h"
-#include "Rx1.h"
-#include "CS1.h"
-#include "CS2.h"
+#include "SPI.h"
+#include "SMasterLdd1.h"
 
 #ifdef __cplusplus
 extern "C" {

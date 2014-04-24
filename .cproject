@@ -50,10 +50,8 @@
 								</option>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.functionsections.227448954" name="Function sections (-ffunction-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.functionsections" value="true" valueType="boolean"/>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.datasections.216098007" name="Data sections (-fdata-sections)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.datasections" value="true" valueType="boolean"/>
-								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.other.verbose.97726945" name="Verbose (-v)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.other.verbose" value="true" valueType="boolean"/>
-								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1862981017" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="_EWL_CONSOLE_SUPPORT"/>
-								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.other.verbose.97726945" name="Verbose (-v)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.other.verbose" value="false" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1862981017" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" valueType="definedSymbols"/>
 								<inputType id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.612159500" name="ARM Ltd Windows GCC C Compiler" superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input"/>
 								<inputType id="org.eclipse.cdt.cross.arm.gnu.c.compiler.input.asmSourcePreproc.459176319" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.input.asmSourcePreproc"/>
 							</tool>
@@ -84,12 +82,10 @@
 									<listOptionValue builtIn="false" value="drivers/BitIoLdd7.c"/>
 									<listOptionValue builtIn="false" value="drivers/BitIoLdd8.c"/>
 									<listOptionValue builtIn="false" value="drivers/Cpu.c"/>
-									<listOptionValue builtIn="false" value="drivers/CsIO1.c"/>
 									<listOptionValue builtIn="false" value="drivers/GI2C1.c"/>
 									<listOptionValue builtIn="false" value="drivers/GPIO0.c"/>
 									<listOptionValue builtIn="false" value="drivers/GPIO5.c"/>
 									<listOptionValue builtIn="false" value="drivers/I2C1.c"/>
-									<listOptionValue builtIn="false" value="drivers/IO1.c"/>
 									<listOptionValue builtIn="false" value="drivers/LEDpin1.c"/>
 									<listOptionValue builtIn="false" value="drivers/LEDpin2.c"/>
 									<listOptionValue builtIn="false" value="drivers/LEDpin3.c"/>
@@ -97,7 +93,6 @@
 									<listOptionValue builtIn="false" value="drivers/Led_Green.c"/>
 									<listOptionValue builtIn="false" value="drivers/Led_Red.c"/>
 									<listOptionValue builtIn="false" value="drivers/PE_LDD.c"/>
-									<listOptionValue builtIn="false" value="drivers/SMasterLdd1.c"/>
 									<listOptionValue builtIn="false" value="drivers/SysTick.c"/>
 									<listOptionValue builtIn="false" value="drivers/VREG_EN.c"/>
 									<listOptionValue builtIn="false" value="drivers/Vectors.c"/>
@@ -117,7 +112,6 @@
 									<listOptionValue builtIn="false" value="drivers/RESETN.c"/>
 									<listOptionValue builtIn="false" value="drivers/Rx1.c"/>
 									<listOptionValue builtIn="false" value="drivers/SFD.c"/>
-									<listOptionValue builtIn="false" value="drivers/SPI.c"/>
 									<listOptionValue builtIn="false" value="drivers/TPM0.c"/>
 									<listOptionValue builtIn="false" value="drivers/Tx1.c"/>
 									<listOptionValue builtIn="false" value="drivers/USB0.c"/>
