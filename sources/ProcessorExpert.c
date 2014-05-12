@@ -33,38 +33,43 @@
 #include "Led_Blue.h"
 #include "LEDpin1.h"
 #include "BitIoLdd1.h"
-#include "SysTick.h"
 #include "Led_Green.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
 #include "Led_Red.h"
 #include "LEDpin3.h"
 #include "BitIoLdd3.h"
-#include "VREG_EN.h"
+#include "CC_VREG_EN.h"
 #include "BitIoLdd4.h"
-#include "RESETN.h"
+#include "CC_RESET.h"
 #include "BitIoLdd5.h"
-#include "CSN.h"
+#include "CC_CSN.h"
 #include "BitIoLdd6.h"
-#include "GPIO0.h"
+#include "CC_CLK.h"
 #include "BitIoLdd7.h"
-#include "FIFO.h"
+#include "CC_FIFO.h"
 #include "BitIoLdd8.h"
-#include "CCA.h"
+#include "CC_CCA.h"
 #include "BitIoLdd10.h"
-#include "SFD.h"
+#include "CC_SFD.h"
 #include "BitIoLdd11.h"
-#include "GPIO5.h"
-#include "BitIoLdd12.h"
-#include "ACCEL.h"
+#include "CC_FIFOP.h"
+#include "ExtIntLdd1.h"
+#include "USBD.h"
+#include "USB0.h"
+#include "CDC1.h"
+#include "Tx1.h"
+#include "Rx1.h"
+#include "CS1.h"
+#include "CS2.h"
+#include "INT_TPM0.h"
+#include "INT_SysTick.h"
 #include "GI2C1.h"
 #include "WAIT1.h"
 #include "I2C1.h"
-#include "FIFOP.h"
-#include "ExtIntLdd1.h"
-#include "TPM0.h"
-#include "SPI.h"
-#include "SMasterLdd1.h"
+#include "MMA1.h"
+#include "UTIL1.h"
+#include "INT_UART0.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -72,9 +77,6 @@
 #include "IO_Map.h"
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
-#include "ConsoleIO.h"
-void SysTick_Handler(void) {}
-void rtimer_arch_interrupt(void) {}
 
 #if USB_CDC
 static uint8_t cdc_buffer[USBD_DATA_BUFF_SIZE];
@@ -122,7 +124,6 @@ int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
 {
   /* Write your local variable definition here */
-  int number;
   
   /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
   PE_low_level_init();
@@ -130,13 +131,6 @@ int main(void)
 
   /* Write your code here */
   /* For example: for(;;) { } */
-  ConsoleIO_Init();
-  printf("Hardware initialized.\r\n");
-  for(;;) {
-     printf("Enter a number:\r\n");
-     scanf("%d",&number);
-     printf("%d", number);
-  }
 #if USB_CDC
   CDC_Run();
 #endif

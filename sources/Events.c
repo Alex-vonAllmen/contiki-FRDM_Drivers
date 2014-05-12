@@ -59,7 +59,7 @@ extern "C" {
 ** ===================================================================
 **     Event       :  fifop_interrupt (module Events)
 **
-**     Component   :  FIFOP [ExtInt]
+**     Component   :  CC_FIFOP [ExtInt]
 **     Description :
 **         This event is called when an active signal edge/level has
 **         occurred.

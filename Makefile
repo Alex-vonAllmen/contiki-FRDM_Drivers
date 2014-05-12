@@ -1,6 +1,7 @@
 ### ProcessorExpert installation directory
-PExDIR = ../../dev/Freescale/CW/MCU/ProcessorExpert
-EWLDIR = ../../dev/Freescale/CW/MCU/ARM_GCC_Support/ewl
+CWDIR = ../../dev/Freescale/CW_MCU_v10.5
+PExDIR = $(CWDIR)/MCU/ProcessorExpert
+EWLDIR = $(CWDIR)/MCU/ARM_GCC_Support/ewl
 
 ### Source file directory
 SOURCEDIR = sources
@@ -47,7 +48,7 @@ clean:
 
 ### Rules for building the driver library.
 SOURCEFILES += $(wildcard $(DRIVERDIR)/*.c)
-#SOURCEFILES += $(SOURCEDIR)/sa_mtb.c $(SOURCEDIR)/Events.c
+#SOURCEFILES += $(SOURCEDIR)/Events.c
 OBJECTFILES += $(patsubst %.c,$(OBJECTDIR)/%.o,$(notdir $(SOURCEFILES)))
 
 define FINALIZE_DEPENDENCY
