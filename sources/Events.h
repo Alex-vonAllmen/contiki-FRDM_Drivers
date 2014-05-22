@@ -59,21 +59,15 @@
 #include "BitIoLdd11.h"
 #include "CC_FIFOP.h"
 #include "ExtIntLdd1.h"
-#include "USBD.h"
-#include "USB0.h"
-#include "CDC1.h"
-#include "Tx1.h"
-#include "Rx1.h"
 #include "CS1.h"
 #include "CS2.h"
-#include "INT_TPM0.h"
 #include "INT_SysTick.h"
 #include "GI2C1.h"
 #include "WAIT1.h"
-#include "I2C1.h"
+#include "I2C0.h"
 #include "MMA1.h"
 #include "UTIL1.h"
-#include "INT_UART0.h"
+#include "INT_LPTimer.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -97,8 +91,6 @@ extern "C" {
 **
 ** ###################################################################
 */
-
-void fifop_interrupt(void);
 /*
 ** ===================================================================
 **     Event       :  fifop_interrupt (module Events)
@@ -111,3 +103,24 @@ void fifop_interrupt(void);
 **     Returns     : Nothing
 ** ===================================================================
 */
+/*
+** ===================================================================
+**     Event       :  Cpu_OnLLSWakeUpINT (module Events)
+**
+**     Component   :  Cpu [MKL25Z128LK4]
+*/
+/*!
+**     @brief
+**         This event is called when Low Leakage WakeUp interrupt
+**         occurs. LLWU flags indicating source of the wakeup can be
+**         obtained by calling the [GetLLSWakeUpFlags] method. Flags
+**         indicating the external pin wakeup source are automatically
+**         cleared after this event is executed. It is responsibility
+**         of user to clear flags corresponding to internal modules.
+**         This event is automatically enabled when [LLWU interrupt
+**         request] is enabled.
+*/
+/* ===================================================================*/
+void Cpu_OnLLSWakeUpINT(void);
+
+void fifop_interrupt(void);

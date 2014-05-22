@@ -55,21 +55,15 @@
 #include "BitIoLdd11.h"
 #include "CC_FIFOP.h"
 #include "ExtIntLdd1.h"
-#include "USBD.h"
-#include "USB0.h"
-#include "CDC1.h"
-#include "Tx1.h"
-#include "Rx1.h"
 #include "CS1.h"
 #include "CS2.h"
-#include "INT_TPM0.h"
 #include "INT_SysTick.h"
 #include "GI2C1.h"
 #include "WAIT1.h"
-#include "I2C1.h"
+#include "I2C0.h"
 #include "MMA1.h"
 #include "UTIL1.h"
-#include "INT_UART0.h"
+#include "INT_LPTimer.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -77,6 +71,8 @@
 #include "IO_Map.h"
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
+void SysTick_IRQHandler(void){}
+void TPM0_IRQHandler(void){}
 
 #if USB_CDC
 static uint8_t cdc_buffer[USBD_DATA_BUFF_SIZE];
